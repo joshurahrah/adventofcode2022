@@ -1,4 +1,4 @@
-# Advent Of Code2022
+# Advent Of Code 2022
 
 My advent of code solutions for 2022 - [Advent Of Code 2022](https://adventofcode.com/2022)
 
