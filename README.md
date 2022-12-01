@@ -9,4 +9,6 @@ Currently, only the included libraries in .net 7.0 are used.
 
 Each solution for each daily puzzle is separated into folders of their own. To run, open command line, navigate to the correct folder and execute the following.
 
-> dotnet run
+```bash
+dotnet run
+```
