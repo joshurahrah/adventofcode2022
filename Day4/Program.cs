@@ -17,12 +17,14 @@ static async Task Run()
         if((elfOne[0] <= elfTwo[0]
             && elfOne[1] >= elfTwo[1])
             || (elfTwo[0] <= elfOne[0]
-                && elfTwo[1] >= elfOne[1]))
+                && elfTwo[1] >= elfOne[1])
+            ||(elfOne[0] <= elfTwo[0]
+                && elfTwo[0] <= elfOne[1])
+            || (elfTwo[0] <= elfOne[0]
+                && elfTwo[1] >= elfOne[0]))
             {
                 fullyContained += 1;
             }
-
-        
     }
 
     Console.WriteLine(fullyContained);
