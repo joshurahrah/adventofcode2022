@@ -9,22 +9,19 @@ static async Task Run()
     {
         var line = await streamReader.ReadLineAsync();
 
-        var sections = line.Split(',');
+        var sections = line
+            .Split(',')
+            .Select(x => x
+                .Split('-')
+                .Select(x => int.Parse(x))
+                .ToArray())
+            .Select(x => Enumerable.Range(x[0], (x[1] - x[0]) + 1).ToList())
+            .ToList();
         
-        var elfOne = sections[0].Split('-').Select(x => int.Parse(x)).ToArray();
-        var elfTwo = sections[1].Split('-').Select(x => int.Parse(x)).ToArray();
-
-        if((elfOne[0] <= elfTwo[0]
-            && elfOne[1] >= elfTwo[1])
-            || (elfTwo[0] <= elfOne[0]
-                && elfTwo[1] >= elfOne[1])
-            ||(elfOne[0] <= elfTwo[0]
-                && elfTwo[0] <= elfOne[1])
-            || (elfTwo[0] <= elfOne[0]
-                && elfTwo[1] >= elfOne[0]))
-            {
-                overlapped += 1;
-            }
+        overlapped = (sections[0].Join(sections[1], 
+                                            x => x,
+                                            y => y,
+                                            (x, y) => x).Count() > 0) ? overlapped += 1 : overlapped;
     }
 
     Console.WriteLine(overlapped);
