@@ -4,7 +4,7 @@ static async Task Run()
 {
     using var streamReader = new StreamReader("./PuzzleInput.txt");
 
-    int fullyContained = 0;
+    int overlapped = 0;
     while (!streamReader.EndOfStream)
     {
         var line = await streamReader.ReadLineAsync();
@@ -23,9 +23,9 @@ static async Task Run()
             || (elfTwo[0] <= elfOne[0]
                 && elfTwo[1] >= elfOne[0]))
             {
-                fullyContained += 1;
+                overlapped += 1;
             }
     }
 
-    Console.WriteLine(fullyContained);
+    Console.WriteLine(overlapped);
 }
