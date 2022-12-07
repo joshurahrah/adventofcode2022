@@ -56,24 +56,27 @@ static async Task Run()
         }
     }
     
-    int sum = Searchs(directory);
+    var spaceRemaining = 70000000 - directory.CalcSize();
+    var spaceNeeded = 30000000 - spaceRemaining;
+
+    int sum = Search(directory, spaceNeeded, directory.CalcSize());
 
     Console.WriteLine(sum);
 }
 
-static int Searchs(Folder folder)
+static int Search(Folder folder, int spaceNeeded, int idealDir)
 {
-    var total = 0;
+    var found = idealDir;
     foreach(var f in folder.Folders)
     {
-        total += Searchs(f);
+        found = Search(f, spaceNeeded, found);
     }
 
     var cSize = folder.CalcSize();
-    if(cSize > 100000)
-        return total;
+    if(cSize > spaceNeeded && cSize < idealDir)
+        return cSize;
 
-    return total += cSize;
+    return found;
 }
 
 public class Folder
