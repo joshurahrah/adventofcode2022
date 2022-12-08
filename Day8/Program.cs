@@ -52,8 +52,6 @@ static int Search(int[,] grid, int x, int y)
                 leftScore++;
                 sx = -1;
             }
-            else
-                throw new InvalidOperationException();
         }
     }
 
@@ -68,8 +66,6 @@ static int Search(int[,] grid, int x, int y)
                 rightScore++;
                 sx = grid.GetLength(1);
             }
-            else
-                throw new InvalidOperationException();
         }
     }
 
@@ -84,8 +80,6 @@ static int Search(int[,] grid, int x, int y)
                 upScore++;
                 sy = -1;
             }
-            else
-                throw new InvalidOperationException();
         }
     }
 
@@ -100,8 +94,6 @@ static int Search(int[,] grid, int x, int y)
                 downScore++;
                 sy = grid.GetLength(0);
             }
-            else
-                throw new InvalidOperationException();
         }
     }
 
