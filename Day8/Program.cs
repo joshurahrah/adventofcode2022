@@ -17,7 +17,6 @@ static async Task Run()
         {
             grid[x, y] = int.Parse(data[y][x].ToString());
         }
-        Console.WriteLine();
     }
 
     int max = 0;
